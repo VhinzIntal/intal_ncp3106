@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite:wght@100..400&display=swap">
+    <title>MY BIONOTE</title>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Playwrite', sans-serif;
+            position: relative;
+            height: 700vh; /* Ensure body takes up full viewport height */
+            margin: 0; /* Remove default margin */
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            overflow: hidden;
+            
+        }
+        .custom-position-fadein {
+            position: absolute;
+            animation: fadeIn 2s 1;
+            color: white;
+        }
+        .custom-position-slide-left {
+            position: absolute;
+            
+            animation: fadeinslideleft 2.5s 1;
+            color: white;
+        }
+        .custom-position-slide-right {
+            position: absolute;
+            
+            animation: fadeinslideright 2.5s 1;
+            color: white;
+        }
+        .custom-position-slide-up {
+            position: absolute;
+            
+            animation: fadeinslideup 2s 1;
+            color: white;
+        }
+        .custom-position-slide-down {
+            position: absolute;
+            
+            animation: fadeinslidedown 2s 1;
+            color: white;
+        }
+        .fadeinslidedown {
+            position: absolute;
+            
+            animation: slidedownfade 2s 1;
+            color: white;
+        }
+        @keyframes slidedownfade {
+            from {
+                transform: translateY(-100px);
+                opacity: 0
+            }
+            to { 
+                transform: translateY(0px);
+                opacity: 0.4;
+            }
+        }
+        @keyframes fadeinslidedown {
+            from {
+                transform: translateY(-100px);
+                opacity: 0
+            }
+            to { 
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        @keyframes fadeinslideleft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0
+            }
+            to { 
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeinslideright {
+            from {
+                transform: translateX(100px);
+                opacity: 0
+            }
+            to { 
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeinslideup {
+            from {
+                transform: translateY(100px);
+                opacity: 0
+            }
+            to { 
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+        .btn{
+            position: absolute;
+            font-size: 2rem;
+            color: rgb(43, 42, 42);
+            background-color: white;
+            border: 10px solid rgb(43, 42, 42);
+            border-radius: 5px;
+
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+            transition-delay: 0s;
+        }
+        .btn:hover{
+            transform: translateY(-10px);
+            background-color: rgb(43, 42, 42);
+            color: white;
+        }
+        .hoverup{
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+            transition-delay: 0s;
+        }
+        .moveleft{
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+            transition-delay: 0s;
+        }
+        .moveleft:hover{
+            transform: translateX(-20px);
+        }
+        .moveright{
+            transition-property: transform;
+            transition-duration: 0.5s;
+            transition-timing-function: ease;
+            transition-delay: 0s;
+        }
+        .moveright:hover{
+            transform: translateX(20px);
+        }
+        .hoverup:hover{
+            transform: translateY(-10px);
+        }
+        
+        #section1 {
+            position: relative;
+            top: 20%;
+            transform: translateX(100%);
+            background-color: black;
+            color: white;
+
+        }
+        
+        #section2 {
+            position: relative;
+            top: 60%;
+            
+        }
+        #section3 {
+            position: relative;
+            top: 90%;
+            transform: translateX(100%);
+            background-color: black;
+            color: white;
+
+            
+        }
+        #section4 {
+            position: relative;
+            top: 150%;
+            
+        } 
+        .text{
+        
+            color: black;
+        }
+        .enlarge-image {
+            height: auto; /* Maintain the aspect ratio */
+            transition: transform 0.3s ease; /* Smooth transition for the scale effect */
+            
+        }
+
+        .enlarge-image:hover {
+            transform: scale(1.2); /* Enlarge the image by 20% */
+           
+        }
+        .smooth-corners {
+            border-radius: 20px; /* Adjust this value for smoother corners */
+            overflow: hidden; /* Ensures the corners are rounded */
+        }
+        .image-container {
+            position: relative;
+            
+        }
+        .image-container img {
+            position: absolute;
+            transition: transform 0.3s ease, z-index 0.3s ease;
+        }
+        .image1 {
+            z-index: 1;
+        }
+        .image2 {
+            z-index: 2;
+        }
+        .image3 {
+            z-index: 3;
+        }
+        .image-container img:hover {
+            z-index: 4; /* Higher z-index to bring it to the front */
+            transform: scale(1.1); /* Optional: slightly enlarge the image on hover */
+        }
+        
+
+
+    </style>
+</head>
+<body>
+    <section id="section">
+        <img class="custom-position-slide-left" src="frontimg.png" alt="" width="650px" height="750px" style="left: -15%;">
+        <h1 class="fadeinslidedown" style="font-size: 230px; top: 0%; left: 15%; text-align: justify; margin-top: 0; color: white; opacity: 0.4;">WELCOME</h1>
+        <h1 class="fadeinslidedown" style="font-size: 150px; top: 2%; left: 15%; text-align: justify; margin-top: 0x; color: white; opacity: 0.4;">TO MY BIONOTE</h1>
+        <a href="#section1">
+            <button class="btn custom-position-slide-up"  style="text-align: justify; top: 11%; left: 43%; " >CLICK ME!</button> 
+        </a>
+         
+</section>
+    
+
+
+<section id="section1">
+    <div class="image-container">
+        <img class="custom-position-slide-left image1 enlarge-image" src="profimg.jpg" alt="" width="350" height="400" style="top: 11%; left: 6%; margin-top: 110px;">
+        <img class="custom-position-slide-left image2 enlarge-image" src="profile image.jpg" alt="" width="350" height="350" style="top: 8%; left: 23%; margin-top: 290px;">
+   </div>
+    <img class="custom-position-fadein smooth-corners" src="backgroundtext.jpg" alt="" width="500px" height="500" style="margin-left: 750px; margin-right: 350px; margin-top: 100px;">
+    <h2 class="custom-position-slide-down text" style="margin-left: 820px; margin-right: 300px; margin-top: 120px ; text-align: center; font-size: 25px;" >
+        Meet Vhinz Aaron M. Intal, a vibrant 20-year-old currently in his 
+        3rd year of pursuing a Bachelor of Science in Computer Engineering 
+        at the University of the East. Residing in Raxabago St. Tondo, Manila, 
+        Vhinz is deeply immersed in his studies, driven by a passion for 
+        technology and a strong commitment to his academic and professional goals. </h2>
+        <a href="#section2">
+            <button class="btn custom-position-slide-up" style="text-align: justify; top: 510px; left: 68%; " >NEXT SLIDE</button> 
+        </a>
+</section>
+
+
+
+
+<section id="section2">
+    <img class="custom-position-fadein smooth-corners" src="backgroundtext.jpg" alt="" width="500px" height="500" style="margin-left: 150px; margin-right: 350px; margin-top: 100px;">
+    
+    <div class="image-container">
+    <img class="custom-position-slide-left image1 enlarge-image " src="awards.jpg" alt="" width="290" height="150" style="top: 0%; left: 70%; margin-top: 80px; margin-bottom: 100px;">
+    <img class="custom-position-slide-right enlarge-image image2" src="siblings.jpg" alt="" width="270px" height="350px" style="top: 8%; left: 60%; margin-top: 180px; ">
+    <img class="custom-position-slide-left enlarge-image image3" src="fampic.jpg" alt="" width="250px" height="350px" style="top: 8%; left: 50%; margin-top: 280px; ">
+
+    </div>
+    <h2 class="custom-position-slide-down text" style="margin-left: 820px; margin-right: 850px; margin-left: 190px; margin-top: 140px ; text-align: center; font-size: 25px;" >
+        Vhinz graduated with honors from ACLC Nortbay 
+        Manila in the 2021-2022 academic year. As the eldest son in 
+        his family, Vhinz is part of a close-knit family with three 
+        siblings, including a youngest sibling who is just 6 months old. 
+        This role has instilled in him a strong sense of responsibility 
+        and dedication, both in his personal life and academic pursuits.</h2>
+
+         
+    <a href="#section3">
+            <button class="btn custom-position-slide-up" style="text-align: justify; top: 500px; left: 27%; " >NEXT SLIDE</button> 
+        </a>
+
+</section>
+
+
+
+
+    <section id="section3">
+        <img class="custom-position-fadein smooth-corners" src="backgroundtext.jpg" alt="" width="500px" height="550" style="margin-left: 750px; margin-right: 350px; margin-top: 70px;">
+        
+        <div class="image-container">
+            <img class="custom-position-slide-left enlarge-image" src="cpefam.jpg" alt="" width="500px" height="550px" style="top: 5%; left: 10%; margin-top: 30px; ">
+            <img class="custom-position-slide-right enlarge-image image2" src="tropa.jpg" alt="" width="350px" height="350px" style="top: 8%; left: 5%; margin-top: 240px; ">
+            <img class="custom-position-slide-left enlarge-image image3" src="trops.jpg" alt="" width="350px" height="350px" style="top: 8%; left: 25%; margin-top: 280px; ">
+
+        </div>
+        <h2 class="custom-position-slide-down text" style="margin-left: 820px; margin-right: 300px; margin-top: 95px ;  text-align: center; font-size: 24px;" >
+        Vhinz enjoys playing video games, playing his guitar,
+        and spending time with friends where they create unforgettable memories. 
+        In addition, he likes to explore new topics that interest his curiosity 
+        and watch animes. His friends' and the CPE community's support and bonds
+        have greatly boosted his motivation, making him eager and thrilled for 
+        upcoming events and projects. </h2>
+        <a href="#section4">
+                <button class="btn custom-position-slide-up" style="text-align: justify; top: 530px; left: 68%; " >NEXT SLIDE</button> 
+            </a>
+
+</section>
+
+    <section id="section4">
+       <img class="custom-position-fadein smooth-corners" src="backgroundtext.jpg" alt="" width="1100px" height="700px" style="margin-left: 200px; margin-right: 450px; margin-top: 0px; text-align: justify;">
+        <img class="custom-position-slide-left smooth-corners hoverup " src="lastpic.jpg" alt="" width="550px" height="550px" style="top: 8%; left: 15%; margin-top: 80px; ">
+    <h2 class="custom-position-slide-down text" style="margin-left: 220px; margin-right: 250px;  margin-top: 140px ;left: 40%; text-align: center; font-size: 30px;" >
+        here are vhinz's social medias. 
+  if you want to know more about him slide in his dms!! </h2>
+ 
+    <a href="#section">
+            <button class="btn custom-position-slide-up" style="text-align: justify; top: 550px; left: 62%; " >BACK TO TOP</button> 
+        </a>
+    <a href="https://www.facebook.com/Intal.vhinz26">
+        <img class="custom-position-slide-up smooth-corners hoverup" src="fblogo.jpg" alt="" style="top: 350px; left: 38%; margin-left: 500px;" width="150px" height="150px" >
+    </a>
+    <a href="https://www.instagram.com/vhnz__/">
+        <img class="custom-position-slide-up smooth-corners hoverup" src="instagramlogo.jpg" alt="" style="top: 350px; left: 58%;" width="150px" height="150px">
+    </a>
+    </section>
+    
+</body>
+</html>

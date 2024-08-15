@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Button with Text</title>
+    <style>
+        .button-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .hover-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50; /* Green background */
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .hover-text {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            position: absolute;
+            left: 100%; /* Position the text to the right of the button */
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #333; /* Dark background for the text */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            white-space: nowrap; /* Prevents text from wrapping */
+        }
+
+        .button-container:hover .hover-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <button class="hover-button">Hover me</button>
+        <span class="hover-text">This is the additional text!</span>
+    </div>
+
+</body>
+</html>

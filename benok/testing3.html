@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scroll and Slide-In Animation</title>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        section {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(-100%); /* Start off-screen */
+            transition: opacity 0.5s, transform 0.5s;
+            background-color: blue
+            
+        }
+
+        /* Classes to apply the slide-in animation */
+        .slide-in-left {
+            opacity: 1;
+            transform: translateX(0); /* Slide in from the left */
+        }
+
+        .slide-in-right {
+            opacity: 1;
+            transform: translateX(0); /* Slide in from the right */
+        }
+
+        /* Alternating sections slide from different sides */
+        .section-2 {
+            transform: translateX(100%); /* Start off-screen (right) */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a href="#section-1" onclick="scrollToSection('section-1')">Section 1</a>
+        <a href="#section-2" onclick="scrollToSection('section-2')">Section 2</a>
+        <a href="#section-3" onclick="scrollToSection('section-3')">Section 3</a>
+    </div>
+
+    <section id="section-1" class="section-1">
+        <h1>Section 1</h1>
+    </section>
+
+    <section id="section-2" class="section-2">
+        <h1>Section 2</h1>
+    </section>
+
+    <section id="section-3" class="section-3">
+        <h1>Section 3</h1>
+    </section>
+
+    <script>
+        function scrollToSection(sectionId) {
+            // Scroll to the section
+            document.getElementById(sectionId).scrollIntoView();
+
+            // Apply the slide-in animation after the scroll
+            setTimeout(() => {
+                if (sectionId === 'section-1' || sectionId === 'section-3') {
+                    document.getElementById(sectionId).classList.add('slide-in-left');
+                } else if (sectionId === 'section-2') {
+                    document.getElementById(sectionId).classList.add('slide-in-right');
+                }
+            }, 500); // Adjust the delay to match the scroll duration
+        }
+    </script>
+
+</body>
+</html>
